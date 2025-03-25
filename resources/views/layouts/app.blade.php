@@ -29,6 +29,21 @@
 
             <!-- Page Content -->
             <main>
+                @if (session('failure'))
+                    <div class="max-w-7xl px-4">
+                        <div class="text-green-600 font-bold text-center p-4">
+                            {{ session('failure') }}
+                        </div>
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="max-w-7xl px-4">
+                        <div class="text-green-600 font-bold text-center p-4">
+                            {{ session('success') }}
+                        </div>
+                    </div>
+                @endif
                 {{ $slot }}
             </main>
         </div>

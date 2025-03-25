@@ -43,7 +43,7 @@ class PostController extends Controller
         $incomingFields['user_id'] = Auth::id();
 
         $newPost = Post::create($incomingFields);
-        return redirect("/single-post/{$newPost->post_slug}");
+        return redirect("/single-post/{$newPost->post_slug}")->with('success', 'Post successfully created.');
     }
 
     /**
@@ -75,7 +75,7 @@ class PostController extends Controller
         $incomingFields['post_slug'] = Str::slug($incomingFields['title']);
 
         $post->update($incomingFields);
-        return redirect("/single-post/{$post->post_slug}");
+        return redirect("/single-post/{$post->post_slug}")->with('success', 'Post successfully edited.');
     }
 
     /**
@@ -84,6 +84,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect('/dashboard')->with('success', 'Student Information successfully deleted.');
+        return redirect('/dashboard')->with('success', 'Post successfully deleted.');
     }
 }
